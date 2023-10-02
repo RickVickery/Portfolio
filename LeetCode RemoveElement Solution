@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] nums = new int[] { 3, 2, 2, 3 };
+        int val = 3;
+        int expectedLength = 2; 
+        int k = RemoveElement(nums, val);
+    
+        // Verify if 'k' is equal to the expected length
+        if (k == expectedLength)
+        {
+            // Sort the first 'k' elements for validation (not required for the problem)
+            Array.Sort(nums, 0, k);
+            Console.WriteLine("Validation passed. k = " + k);
+        }
+        else
+        {
+            Console.WriteLine("Failed, K = " + k);
+        }
+    }
+
+    public static int RemoveElement(int[] nums, int val)
+    {
+        // Initialize the position for non-'val' elements
+        int k = 0; 
+    
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] != val)
+            {
+                // Found an element not equal to 'val', place it at the position 'k'
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+    
+        // 'k' represents the number of elements not equal to 'val'
+        return k;
+    }
+}
